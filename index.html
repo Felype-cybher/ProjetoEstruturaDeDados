@@ -6,83 +6,14 @@
   <title>CliniStack - Fila</title>
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
-  <style>
-    body {
-      background-color: #f0f7fa;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
-    header {
-      background-color: #1e3a8a;
-      color: white;
-    }
-    header .container {
-      padding: 1rem 0;
-    }
-    .badge-count {
-      font-size: 0.9rem;
-      background-color: #e0e7ff;
-      color: #1e3a8a;
-    }
-    .queue-card {
-      border: 1px solid #cbd5e1;
-      border-radius: .75rem;
-      background-color: #fff;
-      margin-bottom: 1rem;
-    }
-    .patient-entry {
-      border-left: 4px solid #1e40af;
-      padding: .75rem 1rem;
-      border-radius: .5rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: .5rem;
-      background-color: #fff;
-    }
-    .patient-info {
-      line-height: 1.2;
-    }
-    .badge-frente, .badge-position {
-      font-size: .75rem;
-      background-color: #e0e7ff;
-      color: #1e3a8a;
-      padding: .25rem .5rem;
-      border-radius: .375rem;
-    }
-    .operation-entry {
-      border-left: 4px solid #1e40af;
-      background-color: #fff;
-      padding: .75rem 1rem;
-      border-radius: .5rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: .5rem;
-    }
-    .operation-text {
-      margin: 0;
-    }
-    .timestamp {
-      font-size: .75rem;
-      color: #6b7280;
-    }
-    footer {
-      margin-top: auto;
-      background-color: #212529;
-      color: #adb5bd;
-      text-align: center;
-      padding: .75rem 0;
-    }
-  </style>
+  <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
   <!-- Cabeçalho -->
   <header>
     <div class="container d-flex flex-column flex-md-row align-items-md-center justify-content-between">
-      <h1 class="h3 mb-0">CliniStack</h1>
-      <small>Sistema de Atendimento com Estrutura de Fila</small>
+      <h1 class="h3 mb-0">CLÍNICA - IFMA COELHO NETO</h1>
+      <small>Sistema de Atendimento Clínico</small>
     </div>
   </header>
 
@@ -148,124 +79,11 @@
 
   <!-- Rodapé -->
   <footer>
-    Sistema de Demonstração de Estrutura de Dados - Fila com Lista Encadeada
+    Sistema de Demonstração de Fila com Lista Encadeada Construída Manualmente 
   </footer>
 
-  <!-- Bootstrap JS + Popper -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-  <!-- Lógica da Fila com Lista Encadeada -->
-  <script>
-    class Node {
-      constructor(data) { this.data = data; this.next = null; }
-    }
-    class LinkedQueue {
-      constructor() { this.head = this.tail = null; this.size = 0; }
-      enqueue(data) {
-        const node = new Node(data);
-        if (!this.head) this.head = this.tail = node;
-        else { this.tail.next = node; this.tail = node; }
-        this.size++;
-      }
-      dequeue() {
-        if (!this.head) return null;
-        const data = this.head.data;
-        this.head = this.head.next;
-        if (!this.head) this.tail = null;
-        this.size--;
-        return data;
-      }
-      peek() { return this.head ? this.head.data : null; }
-      toArray() {
-        const arr = [];
-        for (let curr = this.head; curr; curr = curr.next) arr.push(curr.data);
-        return arr;
-      }
-    }
-
-    const fila = new LinkedQueue();
-    const operacoes = [];
-
-    const nomeInput = document.getElementById('nome');
-    const idadeInput = document.getElementById('idade');
-    const condicaoSelect = document.getElementById('condicao');
-    const queueBox = document.getElementById('queueBox');
-    const operacoesList = document.getElementById('operacoesList');
-    const countBadge = document.getElementById('countBadge');
-
-    function atualizarInterface() {
-      const arr = fila.toArray();
-      if (arr.length === 0) queueBox.innerHTML = '<div class="text-center text-muted">Fila vazia</div>';
-      else {
-        queueBox.innerHTML = arr.map((p, idx) => {
-          const isFront = idx === 0;
-          const posicao = idx + 1;
-          return `
-            <div class="patient-entry">
-              <div class="patient-info">
-                <div><strong>${p.nome}</strong></div>
-                <div>${p.idade} anos - ${p.condicao}</div>
-              </div>
-              ${isFront
-                ? '<span class="badge-frente">FRENTE</span>'
-                : `<span class="badge-position">Posição ${posicao}</span>`}
-            </div>
-          `;
-        }).join('');
-      }
-      countBadge.textContent = fila.size + (fila.size === 1 ? ' paciente' : ' pacientes');
-
-      if (operacoes.length === 0) operacoesList.innerHTML = '<div class="text-center text-muted">Nenhuma operação realizada</div>';
-      else {
-        operacoesList.innerHTML = operacoes.map(op => {
-          const time = new Date().toLocaleTimeString('pt-BR');
-          return `
-            <div class="operation-entry">
-              <p class="operation-text">${op}</p>
-              <span class="timestamp">${time}</span>
-            </div>
-          `;
-        }).join('');
-      }
-    }
-
-    function enqueuePaciente() {
-      const nome = nomeInput.value.trim();
-      const idade = idadeInput.value;
-      const condicao = condicaoSelect.value;
-      if (!nome||!idade||!condicao){alert('Preencha todos os campos!');return;}
-      fila.enqueue({ nome, idade, condicao });
-      operacoes.unshift(`ENFILEIRAR: Adicionado ${nome} à fila`);
-      limparCampos(); atualizarInterface();
-    }
-
-    function dequeuePaciente() {
-      if (fila.size===0){alert('Fila vazia!');return;}
-      const p = fila.dequeue();
-      operacoes.unshift(`DESENFILEIRAR: Atendido ${p.nome}`);
-      atualizarInterface();
-    }
-
-    function peekPaciente() {
-      const p = fila.peek();
-      if (!p){alert('Fila vazia!');return;}
-      operacoes.unshift(`VISUALIZAR: ${p.nome} está na frente`);
-      alert(`Próximo paciente: ${p.nome} (${p.idade} anos) - ${p.condicao}`);
-      atualizarInterface();
-    }
-
-    function clearFila() {
-      while(fila.size) fila.dequeue();
-      operacoes.unshift('LIMPAR: Fila esvaziada'); atualizarInterface();
-    }
-
-    function limparCampos() { nomeInput.value='';idadeInput.value='';condicaoSelect.selectedIndex=0; }
-
-    document.getElementById('btnEnqueue').addEventListener('click', enqueuePaciente);
-    document.getElementById('btnDequeue').addEventListener('click', dequeuePaciente);
-    document.getElementById('btnPeek').addEventListener('click', peekPaciente);
-    document.getElementById('btnClear').addEventListener('click', clearFila);
-
-    atualizarInterface();
-  </script>
+  <script src="/js/fila-encadeada/fila-encadeada.js"></script>
+  <script src="/js/interface-fila/interface-fila.js"></script>
 </body>
 </html>

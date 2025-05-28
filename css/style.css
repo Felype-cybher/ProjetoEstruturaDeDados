@@ -1,0 +1,80 @@
+body {
+    background-color: #f0f7fa;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    background-color: #1e3a8a;
+    color: white;
+}
+
+header .container {
+    padding: 1rem 0;
+}
+
+.badge-count {
+    font-size: 0.9rem;
+    background-color: #e0e7ff;
+    color: #1e3a8a;
+}
+
+.queue-card {
+    border: 1px solid #cbd5e1;
+    border-radius: .75rem;
+    background-color: #fff;
+    margin-bottom: 1rem;
+}
+
+.patient-entry {
+    border-left: 4px solid #1e40af;
+    padding: .75rem 1rem;
+    border-radius: .5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: .5rem;
+    background-color: #fff;
+}
+
+.patient-info {
+    line-height: 1.2;
+}
+
+.badge-frente,
+.badge-position {
+    font-size: .75rem;
+    background-color: #e0e7ff;
+    color: #1e3a8a;
+    padding: .25rem .5rem;
+    border-radius: .375rem;
+}
+
+.operation-entry {
+    border-left: 4px solid #1e40af;
+    background-color: #fff;
+    padding: .75rem 1rem;
+    border-radius: .5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: .5rem;
+}
+
+.operation-text {
+    margin: 0;
+}
+
+.timestamp {
+    font-size: .75rem;
+    color: #6b7280;
+}
+
+footer {
+    margin-top: auto;
+    background-color: #212529;
+    color: #adb5bd;
+    text-align: center;
+    padding: .75rem 0;
+}
