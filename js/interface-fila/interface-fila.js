@@ -1,10 +1,6 @@
-// *** js/interface-fila/interface-fila.js ***
-
-// Instancia a fila (classe carregada pelo arquivo anterior)
 const fila = new window.FilaEncadeada();
 const operacoes = [];
 
-// Captura dos elementos HTML pelos IDs (que já constam no seu HTML)
 const nomeInput = document.getElementById('nome');
 const idadeInput = document.getElementById('idade');
 const condicaoSelect = document.getElementById('condicao');
@@ -12,11 +8,10 @@ const queueBox = document.getElementById('queueBox');
 const operacoesList = document.getElementById('operacoesList');
 const countBadge = document.getElementById('countBadge');
 
-// Atualiza toda a interface (lista de pacientes + badge + lista de operações)
+
 function atualizarInterface() {
   const arr = fila.paraVetor();
 
-  // Atualiza área da fila
   if (arr.length === 0) {
     queueBox.innerHTML = '<div class="text-center text-muted">Fila vazia</div>';
   } else {
@@ -41,11 +36,9 @@ function atualizarInterface() {
       .join('');
   }
 
-  // Atualiza badge de quantidade
   countBadge.textContent =
     fila.tamanho + (fila.tamanho === 1 ? ' paciente' : ' pacientes');
 
-  // Atualiza lista de operações realizadas
   if (operacoes.length === 0) {
     operacoesList.innerHTML =
       '<div class="text-center text-muted">Nenhuma operação realizada</div>';
@@ -64,7 +57,6 @@ function atualizarInterface() {
   }
 }
 
-// Função para ler valores dos inputs, enfileirar e registrar operação
 function enfileirarPaciente() {
   const nome = nomeInput.value.trim();
   const idade = idadeInput.value;
@@ -76,35 +68,32 @@ function enfileirarPaciente() {
   }
 
   fila.enfileirar({ nome, idade, condicao });
-  operacoes.unshift(`ENFILEIRAR: Adicionado ${nome} à fila`);
+  operacoes.unshift(`Adicionar: Adicionado ${nome} à fila`);
   limparCampos();
   atualizarInterface();
 }
 
-// Função para desenfileirar (atender) e registrar operação
 function desenfileirarPaciente() {
   if (fila.tamanho === 0) {
     alert('Fila vazia!');
     return;
   }
   const p = fila.desenfileirar();
-  operacoes.unshift(`DESENFILEIRAR: Atendido ${p.nome}`);
+  operacoes.unshift(`Atender: Atendido ${p.nome}`);
   atualizarInterface();
 }
 
-// Função para espiar quem está na frente
 function espiarPaciente() {
   const p = fila.espiar();
   if (!p) {
     alert('Fila vazia!');
     return;
   }
-  operacoes.unshift(`ESPIAR: ${p.nome} está na frente`);
+  operacoes.unshift(`Ver: ${p.nome} está na frente`);
   alert(`Próximo paciente: ${p.nome} (${p.idade} anos) - ${p.condicao}`);
   atualizarInterface();
 }
 
-// Função para limpar toda a fila e registrar
 function limparFila() {
   while (fila.tamanho) {
     fila.desenfileirar();
@@ -113,14 +102,12 @@ function limparFila() {
   atualizarInterface();
 }
 
-// Limpa campos de input após enfileirar
 function limparCampos() {
   nomeInput.value = '';
   idadeInput.value = '';
   condicaoSelect.selectedIndex = 0;
 }
 
-// Associa eventos aos botões (IDs correspondem exatamente aos do seu HTML)
 document
   .getElementById('btnEnqueue')
   .addEventListener('click', enfileirarPaciente);
@@ -134,5 +121,4 @@ document
   .getElementById('btnClear')
   .addEventListener('click', limparFila);
 
-// Chama pela primeira vez para exibir “Fila vazia” / “Nenhuma operação realizada”
 atualizarInterface();
