@@ -20,7 +20,7 @@ O objetivo é manter a ordem de chegada dos pacientes em uma clínica, garantind
 - Consultar quem é o próximo a ser atendido (espiar).  
 - Limpar toda a fila de uma só vez.  
 
-O site é construído em HTML, CSS , Bootstrap e JavaScript puro, sem frameworks externos. A interface é minimalista e intuitiva, focada em demonstrar o funcionamento da fila encadeada no front-end.
+O site é construído em HTML, CSS , Bootstrap e JavaScript. A interface é minimalista e intuitiva, focada em demonstrar o funcionamento da fila encadeada no front-end.
 
 ---
 
@@ -50,6 +50,7 @@ O site é construído em HTML, CSS , Bootstrap e JavaScript puro, sem frameworks
 
 - **HTML5** – Estruturação da página web.  
 - **CSS3** – Estilização e layout responsivo.  
+- **Bootstrap 4/5** – Biblioteca de componentes para responsividade.
 - **JavaScript (ES6+)** – Lógica da fila encadeada, manipulação do DOM.  
 
 ---
