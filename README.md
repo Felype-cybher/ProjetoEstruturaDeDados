@@ -1,4 +1,4 @@
-# 🚑 Clínica IFMA Centro Médico – Gerenciador de Fila
+# 🚑 Clínica IFMA Centro Clinico – Gerenciador de Fila
 
 Um sistema web simples para gerenciamento de fila de atendimento em clínica médica.  
 Este projeto demonstra, na prática, o uso de uma **fila encadeada em JavaScript** para controlar a ordem de chegada dos pacientes.
