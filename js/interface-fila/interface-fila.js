@@ -8,7 +8,6 @@ const queueBox = document.getElementById('queueBox');
 const operacoesList = document.getElementById('operacoesList');
 const countBadge = document.getElementById('countBadge');
 
-
 function atualizarInterface() {
   const arr = fila.paraVetor();
 
@@ -25,10 +24,9 @@ function atualizarInterface() {
             <div><strong>${p.nome}</strong></div>
             <div>${p.idade} anos - ${p.condicao}</div>
           </div>
-          ${
-            estaNaFrente
-              ? '<span class="badge-frente">FRENTE</span>'
-              : `<span class="badge-position">Posição ${posicao}</span>`
+          ${estaNaFrente
+            ? '<span class="badge-frente">FRENTE</span>'
+            : `<span class="badge-position">Posição ${posicao}</span>`
           }
         </div>
         `;
@@ -79,9 +77,11 @@ function desenfileirarPaciente() {
     return;
   }
   const p = fila.desenfileirar();
+  alert(`Paciente atendido: ${p.nome}`);
   operacoes.unshift(`Atender: Atendido ${p.nome}`);
   atualizarInterface();
 }
+
 
 function espiarPaciente() {
   const p = fila.espiar();
