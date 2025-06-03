@@ -79,9 +79,11 @@ function desenfileirarPaciente() {
     return;
   }
   const p = fila.desenfileirar();
+  alert(`Paciente atendido: ${p.nome}`);
   operacoes.unshift(`Atender: Atendido ${p.nome}`);
   atualizarInterface();
 }
+
 
 function espiarPaciente() {
   const p = fila.espiar();
