@@ -1,3 +1,10 @@
+class No {
+  constructor(dado) {
+    this.dado = dado;
+    this.proximo = null;
+  }
+}
+
 class FilaEncadeada {
   constructor() {
     this.inicio = null;

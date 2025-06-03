@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -9,7 +8,6 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="css/style.css">
 </head>
-
 <body>
 
   <header>
@@ -19,8 +17,10 @@
     </div>
   </header>
 
+  
   <main class="container my-5">
     <div class="row g-4">
+    
       <div class="col-md-4">
         <div class="card shadow-sm">
           <div class="card-body">
@@ -43,15 +43,9 @@
               </select>
             </div>
             <div class="d-grid gap-2">
-              <button id="btnEnqueue" class="btn btn-primary">
-                Adicionar Paciente
-              </button>
-              <button id="btnDequeue" class="btn btn-danger">
-                Atender Paciente
-              </button>
-              <button id="btnPeek" class="btn btn-warning text-white">
-                Visualizar Próximo Paciente
-              </button>
+              <button id="btnEnqueue" class="btn btn-primary">Adicionar Paciente</button>
+              <button id="btnDequeue" class="btn btn-danger">Atender Paciente</button>
+              <button id="btnPeek" class="btn btn-warning text-white">Visualizar Próximo Paciente</button>
               <button id="btnClear" class="btn btn-dark">Limpar</button>
             </div>
           </div>
@@ -63,9 +57,7 @@
           <div class="card-body">
             <div class="d-flex justify-content-between align-items-center mb-3">
               <h5 class="card-title mb-0">Fila de Atendimento</h5>
-              <span class="badge badge-count" id="countBadge">
-                0 pacientes
-              </span>
+              <span class="badge badge-count" id="countBadge">0 pacientes</span>
             </div>
             <div id="queueBox">
               <div class="text-center text-muted">Fila vazia</div>
@@ -76,9 +68,7 @@
           <div class="card-body">
             <h5 class="card-title mb-3">Operações Realizadas</h5>
             <div id="operacoesList">
-              <div class="text-center text-muted">
-                Nenhuma operação realizada
-              </div>
+              <div class="text-center text-muted">Nenhuma operação realizada</div>
             </div>
           </div>
         </div>
@@ -87,12 +77,11 @@
   </main>
 
   <footer>
-    Sistema de Demonstração de Fila com Lista Encadeada Construída Manualmente
+    Sistema de Demonstração de Fila com Lista Encadeada Construída Manualmente 
   </footer>
 
-  <script src="js/fila-encadeada/no.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   <script src="js/fila-encadeada/fila-encadeada.js"></script>
   <script src="js/interface-fila/interface-fila.js"></script>
 </body>
-
 </html>
